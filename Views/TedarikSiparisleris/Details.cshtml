@@ -1,0 +1,48 @@
+﻿@model muzikaletleristok.Models.TedarikSiparisleri
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TedarikSiparisleri</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SiparisTarihi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SiparisTarihi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Miktar)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Miktar)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ToplamFiyat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ToplamFiyat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MuzikAleti)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MuzikAleti.MuzikAletiId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tedarikci)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tedarikci.TedarikciId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.TedarikSiparisId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

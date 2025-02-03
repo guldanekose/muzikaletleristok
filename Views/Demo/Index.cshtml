@@ -1,0 +1,39 @@
+﻿@model muzikaletleristok.Models.Cascade
+@{
+   // ViewData["Title"] = "Index";
+}
+
+<h1>Index Dosyası</h1>
+<div class="form-group">
+    @Html.Label("Kategori Information")
+    @Html.DropDownList("KategoriId", Model.KategorilerList, "-- Kategori Seç--", new { @class = "form-control" })
+    <br />
+    @Html.Label("Muzik Aletleri Information")
+    @Html.DropDownList("MuzikAletiId", Model.MuzikAletleriList, "-- Muzik Aleti Seç--", new { @class = "form-control" })
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script>
+
+    $(function () {
+        $('#KategoriId').change(function () {
+            var id = $('#KategoriId').val();
+            $.ajax({
+                url: '/Demo/GetMuzikaletleri',
+                data: { KategoriId: id },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#MuzikAletiId').empty();
+                    for (var i = 0; i < data.length; i++) {
+
+                        $('#MuzikAletiId').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</option>");
+
+                    }
+                }
+            });
+        });
+    });
+</script>
